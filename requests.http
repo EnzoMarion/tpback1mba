@@ -1,18 +1,261 @@
-@toto = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OWMwOTlmMjZmMTIzMTNkNDkzMjQwOTQ0NWY1MDNkZSIsIm5iZiI6MTc3NjkyNjQ1Ni4wMDEsInN1YiI6IjY5ZTliZWY3MDkxODg5YmFhZDBmNGNkMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Tn_44EceBtSFzW1nVtLrF4YZzMhHp9E23an4nbJY0pc
+@jeton = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OWMwOTlmMjZmMTIzMTNkNDkzMjQwOTQ0NWY1MDNkZSIsIm5iZiI6MTc3NjkyNjQ1Ni4wMDEsInN1YiI6IjY5ZTliZWY3MDkxODg5YmFhZDBmNGNkMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Tn_44EceBtSFzW1nVtLrF4YZzMhHp9E23an4nbJY0pc
 @base_url = https://api.themoviedb.org/3/
+@strapi_jeton = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc2OTM2MzUwLCJleHAiOjE3Nzk1MjgzNTB9.x2jYlLqfqSus8o_DgYC4UE8oVESXCRO36KGrC-gETSE
+
+## Api TMDB
 
 ### Récupérer les films populaires
 GET {{base_url}}movie/popular
-Authorization: Bearer {{toto}}
+Authorization: Bearer {{jeton}}
 
 ### Détails d'un film
 GET {{base_url}}movie/1226863
-Authorization: Bearer {{toto}}
+Authorization: Bearer {{jeton}}
 
 ### Acteurs d'un film
 GET {{base_url}}movie/1226863/credits
-Authorization: Bearer {{toto}}
+Authorization: Bearer {{jeton}}
 
 ### Recherche de film
 GET search/movie?query=mario&page=1
-Authorization: Bearer {{toto}}
+Authorization: Bearer {{jeton}}
+
+
+## Strapi
+
+### Créer utilisateur Strapi
+POST http://localhost:1337/api/auth/local/register
+Content-Type: application/json
+
+{
+  "username": "enzo",
+  "email": "enzo@example.com",
+  "password": "MotDePasseFort123"
+}
+
+### Connexion à l'utilisateur
+POST http://localhost:1337/api/auth/local
+Content-Type: application/json
+
+{
+  "identifier": "enzo@example.com",
+  "password": "MotDePasseFort123"
+}
+
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Chris Pratt"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Charlie Day"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Anya Taylor-Joy"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Jack Black"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Keegan-Michael Key"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Benny Safdie"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Donald Glover"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Luis Guzmán"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Issa Rae"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Kevin Michael Richardson"
+  }
+}
+
+### Créer un acteur sur Strapi
+POST http://localhost:1337/api/movie
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "Kevin Michael Richardson"
+  }
+}
+
+### Tous les acteurs Strapi
+GET http://localhost:1337/api/actors
+Authorization: Bearer {{strapi_jeton}}
+Accept: application/json
+
+
+### Créer un film
+POST http://localhost:1337/api/movies
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "The Super Mario Galaxy Movie",
+    "description": "Having thwarted Bowser's previous plot to marry Princess Peach, Mario and Luigi now face a fresh threat in Bowser Jr., who is determined to liberate his father from captivity and restore the family legacy. Alongside companions new and old, the brothers travel across the stars to stop the young heir's crusade.",
+    "releaseDate": "2026-04-01",
+    "actors": [13, 14, 19]
+  }
+}
+
+### Créer un film
+POST http://localhost:1337/api/movies
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Your Heart Will Be Broken",
+    "description" : "High school student Polina is saved from bullying at her new school and makes a deal with the main bully Bars: he must pretend to be her boyfriend and protect her, and she must do everything he says. During this game, the couple develops real feelings, but her family and classmates have reasons to separate the lovers.",
+    "releaseDate": "2026-03-26",
+    "actors": [15, 14, 20]
+  }
+}
+
+### Créer un film
+POST http://localhost:1337/api/movies
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Avatar Aang: The Last Airbender",
+    "description" : "Avatar Aang, the world's last Airbender, learns of an ancient power that could save his culture from extinction. With the help of his friends, he embarks on a global quest to find it before it falls into the wrong hands and threatens to upend the peace they sacrificed everything to achieve.",
+    "releaseDate": "2026-10-09",
+    "actors": [21, 22, 23]
+  }
+}
+
+### Créer un film
+POST http://localhost:1337/api/movies
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Send Help",
+    "description" : "Two colleagues become stranded on a deserted island, the only survivors of a plane crash. On the island, they must overcome past grievances and work together to survive, but ultimately, it's a battle of wills and wits to make it out alive.",
+    "releaseDate": "2026-01-22",
+    "actors": [18, 24, 23]
+  }
+}
+
+### Créer un film
+POST http://localhost:1337/api/movies
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Avatar: Fire and Ash",
+    "description" : "In the wake of the devastating war against the RDA and the loss of their eldest son, Jake Sully and Neytiri face a new threat on Pandora: the Ash People, a violent and power-hungry Na'vi tribe led by the ruthless Varang. Jake's family must fight for their survival and the future of Pandora in a conflict that pushes them to their emotional and physical limits.",
+    "releaseDate": "2025-12-17",
+    "actors": [18, 20, 21, 23]
+  }
+}
+
+### Créer un film
+POST http://localhost:1337/api/movies
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Vengeance",
+    "description" : "The brutal murder of the wife of “Toro,” a military hero in the special forces, turns him into a man with a single purpose: revenge. After a stroke of fate makes him a millionaire, Carlos transforms his fortune into an arsenal and, together with his closest soldiers, sets out to hunt down those responsible.",
+    "releaseDate": "2026-02-26",
+    "actors": [15, 14, 20, 24]
+  }
+}
+
+### Tous les films Strapi
+GET http://localhost:1337/api/movies
+Authorization: Bearer {{strapi_jeton}}
+Accept: application/json
+
