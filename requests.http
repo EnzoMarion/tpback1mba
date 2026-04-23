@@ -1,0 +1,18 @@
+@toto = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OWMwOTlmMjZmMTIzMTNkNDkzMjQwOTQ0NWY1MDNkZSIsIm5iZiI6MTc3NjkyNjQ1Ni4wMDEsInN1YiI6IjY5ZTliZWY3MDkxODg5YmFhZDBmNGNkMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Tn_44EceBtSFzW1nVtLrF4YZzMhHp9E23an4nbJY0pc
+@base_url = https://api.themoviedb.org/3/
+
+### Récupérer les films populaires
+GET {{base_url}}movie/popular
+Authorization: Bearer {{toto}}
+
+### Détails d'un film
+GET {{base_url}}movie/1226863
+Authorization: Bearer {{toto}}
+
+### Acteurs d'un film
+GET {{base_url}}movie/1226863/credits
+Authorization: Bearer {{toto}}
+
+### Recherche de film
+GET search/movie?query=mario&page=1
+Authorization: Bearer {{toto}}
