@@ -259,3 +259,12 @@ GET http://localhost:1337/api/movies
 Authorization: Bearer {{strapi_jeton}}
 Accept: application/json
 
+
+### Films contenant "H"
+GET http://localhost:1337/api/movies?filters[title][$contains]=H
+Accept: application/json
+
+
+### Films avec acteurs (populate)
+GET http://localhost:1337/api/movies?populate=actors
+Accept: application/json
