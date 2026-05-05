@@ -1,6 +1,6 @@
 @jeton = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OWMwOTlmMjZmMTIzMTNkNDkzMjQwOTQ0NWY1MDNkZSIsIm5iZiI6MTc3NjkyNjQ1Ni4wMDEsInN1YiI6IjY5ZTliZWY3MDkxODg5YmFhZDBmNGNkMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Tn_44EceBtSFzW1nVtLrF4YZzMhHp9E23an4nbJY0pc
 @base_url = https://api.themoviedb.org/3/
-@strapi_jeton = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc2OTM2MzUwLCJleHAiOjE3Nzk1MjgzNTB9.x2jYlLqfqSus8o_DgYC4UE8oVESXCRO36KGrC-gETSE
+@strapi_jeton = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc3OTY0MTA2LCJleHAiOjE3ODA1NTYxMDZ9.y1BYEqevSbN-Ajmjt8g8dVoTACuAfcCYgFa-PtN500s
 
 ## Api TMDB
 
@@ -268,3 +268,32 @@ Accept: application/json
 ### Films avec acteurs (populate)
 GET http://localhost:1337/api/movies?populate=actors
 Accept: application/json
+
+### 3 films les plus récents
+GET http://localhost:1337/api/movies?sort[0]=releaseDate:desc&pagination[limit]=3
+Accept: application/json
+
+### Du 2ème au 4ème film
+GET http://localhost:1337/api/movies?pagination[start]=1&pagination[limit]=3
+Accept: application/json
+
+### Test GET public (sans token)
+GET http://localhost:1337/api/movies
+Accept: application/json
+
+### Profil utilisateur connecté
+GET http://localhost:1337/api/users/me
+Authorization: Bearer {{strapi_jeton}}
+Accept: application/json
+
+### Test POST film sans token (doit échouer)
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Film non autorisé",
+    "description": "",
+    "releaseDate": "2026-01-01"
+  }
+}
