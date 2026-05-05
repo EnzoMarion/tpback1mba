@@ -1,6 +1,6 @@
 @jeton = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5OWMwOTlmMjZmMTIzMTNkNDkzMjQwOTQ0NWY1MDNkZSIsIm5iZiI6MTc3NjkyNjQ1Ni4wMDEsInN1YiI6IjY5ZTliZWY3MDkxODg5YmFhZDBmNGNkMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Tn_44EceBtSFzW1nVtLrF4YZzMhHp9E23an4nbJY0pc
 @base_url = https://api.themoviedb.org/3/
-@strapi_jeton = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc3OTY0MTA2LCJleHAiOjE3ODA1NTYxMDZ9.y1BYEqevSbN-Ajmjt8g8dVoTACuAfcCYgFa-PtN500s
+@strapi_jeton = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzc3OTY0NzI1LCJleHAiOjE3ODA1NTY3MjV9.4WZLp_JKuyW5RRYImujV4Te1sXwqbMLfOu0pNLhKY_I
 
 ## Api TMDB
 
@@ -281,10 +281,6 @@ Accept: application/json
 GET http://localhost:1337/api/movies
 Accept: application/json
 
-### Profil utilisateur connecté
-GET http://localhost:1337/api/users/me
-Authorization: Bearer {{strapi_jeton}}
-Accept: application/json
 
 ### Test POST film sans token (doit échouer)
 POST http://localhost:1337/api/movies
@@ -297,3 +293,33 @@ Content-Type: application/json
     "releaseDate": "2026-01-01"
   }
 }
+
+### Test POST film sans token (doit marcher)
+POST http://localhost:1337/api/movies
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Film non autorisé",
+    "description": "",
+    "releaseDate": "2026-01-01"
+  }
+}
+
+### Profil utilisateur connecté
+GET http://localhost:1337/api/users/me
+Authorization: Bearer {{strapi_jeton}}
+Accept: application/json
+
+### Changer le mot de passe de l'utilisateur connecté
+POST http://localhost:1337/api/auth/change-password
+Authorization: Bearer {{strapi_jeton}}
+Content-Type: application/json
+
+{
+  "currentPassword": "MotDePasseFort123",
+  "password": "Cisco123",
+  "passwordConfirmation": "Cisco123"
+}
+
