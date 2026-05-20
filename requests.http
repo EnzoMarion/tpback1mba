@@ -325,3 +325,30 @@ Content-Type: application/json
 
 ### Ajouter un film
 GET http://localhost:1995/ajouter-film
+
+### Register
+POST http://localhost:1995/api/register
+Content-Type: application/json
+
+{
+  "email": "enzo@example.com",
+  "password": "Cisco123&"
+}
+
+### Login bon
+POST http://localhost:1995/local
+Content-Type: application/json
+
+{
+  "identifier": "enzo@example.com",
+  "password": "Cisco123&"
+}
+
+### Login mauvais
+POST http://localhost:1995/local
+Content-Type: application/json
+
+{
+  "identifier": "enzo@example.com",
+  "password": "mauvais"
+}

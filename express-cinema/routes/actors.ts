@@ -3,7 +3,7 @@ import { prisma } from '../prisma';
 
 const actorsRouter = Router();
 
-actorsRouter.get('/api/actors', async (_req, res) => {
+actorsRouter.get('/', async (_req, res) => {
     try {
         const filtersAny = _req.query.filters as any;
         const where: any = {};
@@ -32,7 +32,7 @@ actorsRouter.get('/api/actors', async (_req, res) => {
     }
 })
 
-actorsRouter.get('/api/actors/:id', async (req, res) => {
+actorsRouter.get('/:id', async (req, res) => {
     try {
         const id = Number(req.params.id);
         const actor = await prisma.actor.findUnique({ where: { id } });

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { prisma } from '../prisma';
 
 const moviesRouter = Router();
-moviesRouter.get('/api/movies', async (_req, res) => {
+moviesRouter.get('/', async (_req, res) => {
     try {
         const where: any = {};
         const orderBy: any[] = [];
@@ -57,7 +57,7 @@ moviesRouter.get('/api/movies', async (_req, res) => {
     }
 });
 
-moviesRouter.get('/api/movies/:id', async (req, res) => {
+moviesRouter.get('/:id', async (req, res) => {
     try {
         const id = Number(req.params.id);
         const movie = await prisma.movie.findUnique({ where: { id } });
