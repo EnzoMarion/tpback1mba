@@ -323,3 +323,5 @@ Content-Type: application/json
   "passwordConfirmation": "Cisco123"
 }
 
+### Ajouter un film
+GET http://localhost:1995/ajouter-film
