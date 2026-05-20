@@ -49,6 +49,10 @@ moviesRouter.get('/', async (_req, res) => {
             orderBy: orderBy.length > 0 ? orderBy : undefined,
             take,
             skip,
+            // Populate
+            /*include: {
+                actors: true,
+            },*/
         });
         res.json(movies);
     } catch (error) {
